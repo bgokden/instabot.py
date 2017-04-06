@@ -579,6 +579,20 @@ class InstaBot:
             time.sleep(3)
             # print("Tic!")
 
+    def new_auto_mod_just_like(self):
+        while True:
+            # ------------------- Get media_id -------------------
+            if len(self.media_by_tag) == 0:
+                self.get_media_id_by_tag(random.choice(self.tag_list))
+                self.this_tag_like_count = 0
+                self.max_tag_like_count = random.randint(
+                    1, self.max_like_for_one_tag)
+            # ------------------- Like -------------------
+            self.new_auto_mod_like()
+            # Bot iteration in 1 sec
+            time.sleep(3)
+            # print("Tic!")
+
     def new_auto_mod_like(self):
         if time.time() > self.next_iteration["Like"] and self.like_per_day != 0 \
                 and len(self.media_by_tag) > 0:
